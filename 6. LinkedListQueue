@@ -1,0 +1,24 @@
+### Use Singly Linked List from the other file
+
+class LinkedListQueue:
+    def __init__(self):
+        self._data = SinglyLinkedList()
+        
+    def __len__(self):
+        return self._data.size
+        
+    def is_empty(self):
+    
+        return self._data.size == 0
+        
+    def first(self):
+    
+        return self._data.head
+        
+    def enqueue(self, node):
+    
+        self._data.add_right(node)
+        
+    def dequeue(self):
+        
+        return self._data.delete_left()
