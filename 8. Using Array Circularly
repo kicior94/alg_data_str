@@ -1,0 +1,20 @@
+In developing a more robust queue implementation, we allow the front of the queue to drift rightward, 
+and we allow the contents of the queue to “wrap around” the end of an underlying array. 
+We assume that our underlying array has fixed length Nthat is greater that the actual number of elements in the queue. 
+New elements are enqueued toward the “end” of the current queue, progressing from the front to
+index N −1 and continuing at index 0, then 1. 
+
+Implementing this circular view is not difficult. When we dequeue an element
+and want to “advance” the front index, we use the arithmetic: 
+f = (f + 1) % N. Recall
+that the % operator in Python denotes the modulo operator, which is computed
+by taking the remainder after an integral division. For example:
+
+14 // 3 = 5 but  14 % 3 = 2. 
+
+The modulo operator is ideal for treating an array circularly. As a concrete example, if we have a list
+of length 10, and a front index 7, we can advance the front by formally computing
+(7+1) % 10, which is simply 8, as 8 divided by 10 is 0 with a remainder of 8.
+Similarly, advancing index 8 results in index 9. But when we advance from index 9
+(the last one in the array), we compute (9+1) % 10, which evaluates to index 0 (as
+10 divided by 10 has a remainder of zero).
