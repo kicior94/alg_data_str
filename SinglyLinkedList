@@ -1,0 +1,59 @@
+class Node:
+
+    def __init__(self, e):
+        self.element = e
+        self.next = None
+
+class SinglyLinkedListEmpty(Exception):
+    pass
+        
+class SinglyLinkedList:
+
+     def __init__(self):
+         self.head = None
+         self.tail = None
+     
+     def is_empty(self):
+          """Return True if the Singly Linked List is empty"""
+          
+          return self.head is None
+     
+     def add_left(self, node):
+         """Adds a new node IN FRONT OF the head (As a new head)"""
+         
+         if self.is_empty():
+             self.head = node
+             self.tail = node
+         else:
+             node.next = self.head
+             self.head = node
+     
+     def add_right(self, node):
+         """Adds a new node AFTER the tail (As a new tail)"""
+         
+         if self.is_empty():
+             self.head = node
+             self.tail = node
+         else:
+             tail.next = node
+             self.tail = node
+     
+     def delete_left(self):
+          """Deletes the node at the head of a Single Linked List"""
+               self.head = self.head.next
+          
+     def traverse(self):
+         """Traverse the Singly Linked List and return regular list with all nodes"""
+         
+         if self.is_empty():
+             raise SinglyLinkedListEmpty('Empty!')
+         else:
+             nodes = []
+             current_e = self.head
+             while current_e is not None:
+                 nodes.append(current_e)
+                 current_e = current_e.next
+     
+     def search(self, e):
+         """Searches the Singly Linked List for node with element e and returns it if found, otherwise return -1"""
+         """Left as an exercise"""
