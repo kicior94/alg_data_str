@@ -1,0 +1,20 @@
+### Use Singly Linked List from other file
+
+class Stack:
+    def __init__(self):
+        self.stack = SinglyLinkedList()
+        
+    def __len__(self):
+        return self.stack.size
+        
+    def is_empty(self):
+        return self.stack.size == 0
+        
+    def push(self, item):
+        self.stack.add_left(node)
+        
+    def pop(self):
+        self.stack.delete_left()
+        
+    def top(self):
+        return self.stack.head
