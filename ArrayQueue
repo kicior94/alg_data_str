@@ -1,0 +1,63 @@
+class QueueEmpty(Exception):
+    pass
+    
+class QueueFull(Exception):
+    pass
+
+class ArrayQueue:
+    """Queue implementation using Python's list"""
+    
+    DEFAUT_CAPACITY = 10
+
+    def __init__(self):
+        """Create an empty queue"""
+        self._data = [None] * ArrayQueue.DEFAULT_CAPACITY
+        self._size = 0
+        self._front = 0
+
+    def __len__(self):
+        """Return the number of elements in the stack"""
+        
+        return self._size
+
+    def is_empty(self):
+        """Return True if the queue is empty"""
+        
+        return self._size == 0
+        
+    def is_full(self):
+        """Return True if the queue is full"""
+        
+        return self._size == ArrayQueue.DEFAULT_CAPACITY
+    
+    def first(self):
+        """Return (but do not remove) the front element of the queue"""
+        if self.is_empty():
+            raise QueueEmpty('Queue is empty!')
+        return self._data[self._front]
+
+    def dequeue(self):
+        """Return and remove the front element of the queue"""
+        
+        if self.is_empty():
+            raise QueueEmpty('Queue is empty')
+        dequeued_e = self._data[self._front]
+        self._data[self._front] = None # Garbage Collection
+        
+        #This is how to implement the queue as a CIRCULAR array
+        self._front = (self_front +1)% len(self._data) # Use modulo arithmetic to 'wrap' around when front is at the last index
+        self._size -= 1 # Because we remove an element the size of the queue is reduced by 1
+        return dequeued_e 
+        
+
+    def enqueue(self, e):
+        """Add a new element to the back of th queue"""
+        
+        if self.is_full():
+            raise QueueFull('QueueFull')
+        
+        #This part has to do with a circular array. Please read article in Circular Array File!
+        place = (self._front + self._size) % len(self._data)
+        self._data[place] = e
+        self._size += 1
+    
